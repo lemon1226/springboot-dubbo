@@ -1,0 +1,9 @@
+dubbo:
+  application:
+    name: springboot-dubbo-consumer
+  registry:
+    address: zookeeper://10.101.228.79:2181
+  consumer:
+    timeout: 5000
+server:
+  port: 8005

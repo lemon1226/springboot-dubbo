@@ -1,0 +1,15 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: springboot-dubbo-provider
+
+dubbo:
+  scan:
+    base-packages: com.lemon.springbootdubboprovider.service
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address: zookeeper://10.101.228.79:2181

@@ -24,11 +24,15 @@
         <zookeeper.version>3.5.5</zookeeper.version>
         <curator-framework.version>4.2.0</curator-framework.version>
         <curator-recipes.version>4.2.0</curator-recipes.version>
+        <lombok.version>1.18.8</lombok.version>
+        <springboot-dubbo-api.version>0.0.1-SNAPSHOT</springboot-dubbo-api.version>
     </properties>
 
     <!--项目模块-->
     <modules>
         <module>springboot-dubbo-api</module>
+        <module>springboot-dubbo-consumer</module>
+        <module>springboot-dubbo-provider</module>
     </modules>
 
     <dependencies>
@@ -73,6 +77,16 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
             <version>${curator-recipes.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lemon</groupId>
+            <artifactId>springboot-dubbo-api</artifactId>
+            <version>${springboot-dubbo-api.version}</version>
         </dependency>
     </dependencies>
 
