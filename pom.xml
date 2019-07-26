@@ -21,7 +21,7 @@
         <java.version>1.8</java.version>
         <dubbo-spring-boot.version>2.7.0</dubbo-spring-boot.version>
         <dubbo.version>2.7.0</dubbo.version>
-        <zookeeper.version>3.4.9</zookeeper.version>
+        <zookeeper.version>3.5.5</zookeeper.version>
         <curator-framework.version>4.2.0</curator-framework.version>
         <curator-recipes.version>4.2.0</curator-recipes.version>
     </properties>
@@ -75,6 +75,27 @@
             <version>${curator-recipes.version}</version>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
