@@ -1,6 +1,8 @@
 package com.lemon.springbootdubboprovider.service;
 
 import com.lemon.springbootdubboapi.api.UserService;
+import com.lemon.springbootdubboapi.util.ResultUtil;
+import com.lemon.springbootdubboapi.vo.ResultVo;
 import com.lemon.springbootdubboapi.vo.UserInfo;
 import org.apache.dubbo.config.annotation.Service;
 
@@ -15,16 +17,16 @@ import java.util.Date;
 @Service
 public class UserServiceImpl implements UserService {
     @Override
-    public String sayHello(UserInfo user) {
-        return "你好，" + user.getName();
+    public ResultVo<String> sayHello(UserInfo user) {
+        return ResultUtil.success("你好，" + user.getName());
     }
 
     @Override
-    public UserInfo getUser(String name) {
+    public ResultVo<UserInfo> getUser(String name) {
         UserInfo user = new UserInfo();
         user.setAge(100);
         user.setName("胡汉三");
         user.setBirthday(new Date());
-        return user;
+        return ResultUtil.success(user);
     }
 }

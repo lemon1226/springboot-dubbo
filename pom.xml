@@ -18,14 +18,15 @@
     <packaging>pom</packaging> <!--修改父项目为POM-->
 
     <properties>
+        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <java.version>1.8</java.version>
-        <dubbo-spring-boot.version>2.7.0</dubbo-spring-boot.version>
-        <dubbo.version>2.7.0</dubbo.version>
-        <zookeeper.version>3.5.5</zookeeper.version>
-        <curator-framework.version>4.2.0</curator-framework.version>
-        <curator-recipes.version>4.2.0</curator-recipes.version>
+        <dubbo-spring-boot.version>2.7.1</dubbo-spring-boot.version>
         <lombok.version>1.18.8</lombok.version>
         <springboot-dubbo-api.version>0.0.1-SNAPSHOT</springboot-dubbo-api.version>
+        <dubbo.version>2.7.1</dubbo.version>
+        <curator-framework.version>4.2.0</curator-framework.version>
+        <curator-recipes.version>4.2.0</curator-recipes.version>
+        <zookeeper.version>3.5.5</zookeeper.version>
     </properties>
 
     <!--项目模块-->
@@ -34,6 +35,48 @@
         <module>springboot-dubbo-consumer</module>
         <module>springboot-dubbo-provider</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Aapche Dubbo  -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -51,23 +94,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--整合dubbo-->
+
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>${dubbo-spring-boot.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
-            <version>${dubbo.version}</version>
         </dependency>
-        <!-- Zookeeper -->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>${zookeeper.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-framework</artifactId>
@@ -77,6 +115,12 @@
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
             <version>${curator-recipes.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

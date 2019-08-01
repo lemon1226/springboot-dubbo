@@ -1,12 +1,11 @@
 package com.lemon.springbootdubboconsumer.controller;
 
 import com.lemon.springbootdubboapi.api.UserService;
+import com.lemon.springbootdubboapi.vo.ResultVo;
 import com.lemon.springbootdubboapi.vo.UserInfo;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
 
 /**
  * description:
@@ -17,18 +16,18 @@ import java.util.Date;
 @RestController
 public class UserController {
 
-    @Reference
+    @Reference(mock = "com.lemon.springbootdubboconsumer.service.UserServiceFailBack")
     private UserService userService;
 
     @GetMapping("sayHello")
-    public String sayHello() {
+    public ResultVo<String> sayHello() {
         UserInfo user = new UserInfo();
         user.setName("王怜花");
         return userService.sayHello(user);
     }
 
     @GetMapping("getUser")
-    public UserInfo getUser(String name) {
+    public ResultVo<UserInfo> getUser(String name) {
         return userService.getUser("yui");
     }
 }
