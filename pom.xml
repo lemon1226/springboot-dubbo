@@ -26,7 +26,7 @@
         <dubbo.version>2.7.1</dubbo.version>
         <curator-framework.version>4.2.0</curator-framework.version>
         <curator-recipes.version>4.2.0</curator-recipes.version>
-        <zookeeper.version>3.5.5</zookeeper.version>
+        <zookeeper.version>3.7.2</zookeeper.version>
     </properties>
 
     <!--项目模块-->
